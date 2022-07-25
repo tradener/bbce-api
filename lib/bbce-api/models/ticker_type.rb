@@ -11,9 +11,9 @@ require 'date'
 
 module BbceApi
   class TickerType
-    0 = 0.freeze
-    1 = 1.freeze
-    2 = 2.freeze
+    DEFAULT = 0.freeze
+    CUSTOM = 1.freeze
+    TEST = 2.freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
