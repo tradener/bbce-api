@@ -41,9 +41,9 @@ module BbceApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-      ])
+              ])
     end
-  
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
@@ -58,9 +58,6 @@ module BbceApi
         end
         h[k.to_sym] = v
       }
-
-      # call parent's initialize
-      super(attributes)
 
       if attributes.key?(:'email')
         self.email = attributes[:'email']
@@ -78,7 +75,7 @@ module BbceApi
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = super
+      invalid_properties = Array.new
       if @email.nil?
         invalid_properties.push('invalid value for "email", email cannot be nil.')
       end
@@ -103,9 +100,9 @@ module BbceApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          email == o.email &&
-          password == o.password &&
-          company_external_code == o.company_external_code && super(o)
+        email == o.email &&
+        password == o.password &&
+        company_external_code == o.company_external_cod
     end
 
     # @see the `==` method
@@ -132,7 +129,6 @@ module BbceApi
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
-      super(attributes)
       self.class.openapi_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
@@ -186,8 +182,10 @@ module BbceApi
             hash[_deserialize(k_type, k)] = _deserialize(v_type, v)
           end
         end
-      else # model
-        BbceApi.const_get(type).build_from_hash(value)
+      else
+        # model
+        # BbceApi.const_get(type).build_from_hash(value)
+        value.to_s
       end
     end
 
@@ -206,7 +204,7 @@ module BbceApi
     # Returns the object in the form of hash
     # @return [Hash] Returns the object in the form of hash
     def to_hash
-      hash = super
+      hash = {}
       self.class.attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
@@ -235,5 +233,6 @@ module BbceApi
       else
         value
       end
-    end  end
+    end
+  end
 end

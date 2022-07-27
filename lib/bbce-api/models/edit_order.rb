@@ -210,7 +210,8 @@ module BbceApi
           end
         end
       else # model
-        BbceApi.const_get(type).build_from_hash(value)
+        # BbceApi.const_get(type).build_from_hash(value)
+        value.to_s
       end
     end
 
