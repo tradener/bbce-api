@@ -32,9 +32,9 @@ module BbceApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'email' => :'',
-        :'password' => :'',
-        :'company_external_code' => :''
+        :'email' => :'String',
+        :'password' => :'String',
+        :'company_external_code' => :'Integer'
       }
     end
 
@@ -184,8 +184,7 @@ module BbceApi
         end
       else
         # model
-        # BbceApi.const_get(type).build_from_hash(value)
-        value.to_s
+        BbceApi.const_get(type).build_from_hash(value)
       end
     end
 

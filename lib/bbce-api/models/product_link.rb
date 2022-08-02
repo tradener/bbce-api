@@ -60,7 +60,7 @@ module BbceApi
         :'underlying_asset' => :'Object',
         :'product_category' => :'Object',
         :'company_profile' => :'Object',
-        :'features' => :'Array',
+        :'features' => :'Object',
         :'active' => :'Object',
         :'trading_unit' => :'Object',
         :'measurement_unit' => :'Object',
@@ -238,8 +238,7 @@ module BbceApi
           end
         end
       else # model
-        # BbceApi.const_get(type).build_from_hash(value)
-        value
+        BbceApi.const_get(type).build_from_hash(value)
       end
     end
 

@@ -48,13 +48,13 @@ module BbceApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_token' => :'',
-        :'expires_in' => :'',
-        :'id_token' => :'',
-        :'user_id' => :'',
-        :'company_id' => :'',
-        :'name' => :'',
-        :'refresh_token' => :''
+        :'access_token' => :'String',
+        :'expires_in' => :'Integer',
+        :'id_token' => :'String',
+        :'user_id' => :'String',
+        :'company_id' => :'String',
+        :'name' => :'String',
+        :'refresh_token' => :'String'
       }
     end
 
@@ -248,8 +248,7 @@ module BbceApi
           end
         end
       else # model
-        # BbceApi.const_get(type).build_from_hash(value)
-        value.to_s
+        BbceApi.const_get(type).build_from_hash(value)
       end
     end
 
