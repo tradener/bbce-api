@@ -20,6 +20,8 @@ module BbceApi
 
     attr_accessor :company_profile
 
+    attr_accessor :features
+
     # Is Active?
     attr_accessor :active
 
@@ -42,6 +44,7 @@ module BbceApi
         :'underlying_asset' => :'underlyingAsset',
         :'product_category' => :'productCategory',
         :'company_profile' => :'companyProfile',
+        :'features' => :'features',
         :'active' => :'active',
         :'trading_unit' => :'tradingUnit',
         :'measurement_unit' => :'measurementUnit',
@@ -57,6 +60,7 @@ module BbceApi
         :'underlying_asset' => :'Object',
         :'product_category' => :'Object',
         :'company_profile' => :'Object',
+        :'features' => :'Array',
         :'active' => :'Object',
         :'trading_unit' => :'Object',
         :'measurement_unit' => :'Object',
@@ -100,6 +104,10 @@ module BbceApi
 
       if attributes.key?(:'company_profile')
         self.company_profile = attributes[:'company_profile']
+      end
+
+      if attributes.key?(:'features')
+        self.features = attributes[:'features']
       end
 
       if attributes.key?(:'active')
@@ -231,7 +239,7 @@ module BbceApi
         end
       else # model
         # BbceApi.const_get(type).build_from_hash(value)
-        value.to_s
+        value
       end
     end
 
