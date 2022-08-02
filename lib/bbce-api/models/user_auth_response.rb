@@ -48,13 +48,13 @@ module BbceApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_token' => :'',
-        :'expires_in' => :'',
-        :'id_token' => :'',
-        :'user_id' => :'',
-        :'company_id' => :'',
-        :'name' => :'',
-        :'refresh_token' => :''
+        :'access_token' => :'String',
+        :'expires_in' => :'Integer',
+        :'id_token' => :'String',
+        :'user_id' => :'String',
+        :'company_id' => :'String',
+        :'name' => :'String',
+        :'refresh_token' => :'String'
       }
     end
 
@@ -78,9 +78,6 @@ module BbceApi
         end
         h[k.to_sym] = v
       }
-
-      # call parent's initialize
-      super(attributes)
 
       if attributes.key?(:'access_token')
         self.access_token = attributes[:'access_token']
@@ -114,7 +111,7 @@ module BbceApi
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = super
+      invalid_properties = Array.new
       if @access_token.nil?
         invalid_properties.push('invalid value for "access_token", access_token cannot be nil.')
       end
@@ -170,7 +167,7 @@ module BbceApi
           user_id == o.user_id &&
           company_id == o.company_id &&
           name == o.name &&
-          refresh_token == o.refresh_token && super(o)
+          refresh_token == o.refresh_token
     end
 
     # @see the `==` method
@@ -197,7 +194,6 @@ module BbceApi
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
-      super(attributes)
       self.class.openapi_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
@@ -271,7 +267,7 @@ module BbceApi
     # Returns the object in the form of hash
     # @return [Hash] Returns the object in the form of hash
     def to_hash
-      hash = super
+      hash = Hash.new
       self.class.attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?

@@ -90,9 +90,6 @@ module BbceApi
         h[k.to_sym] = v
       }
 
-      # call parent's initialize
-      super(attributes)
-
       if attributes.key?(:'deadline_type')
         self.deadline_type = attributes[:'deadline_type']
       end
@@ -121,7 +118,7 @@ module BbceApi
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = super
+      invalid_properties = Array.new
       if @deadline_type.nil?
         invalid_properties.push('invalid value for "deadline_type", deadline_type cannot be nil.')
       end
@@ -183,7 +180,7 @@ module BbceApi
           deadline_end == o.deadline_end &&
           limit_type == o.limit_type &&
           purchase_limit == o.purchase_limit &&
-          sale_limit == o.sale_limit && super(o)
+          sale_limit == o.sale_limit
     end
 
     # @see the `==` method
@@ -210,7 +207,6 @@ module BbceApi
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
-      super(attributes)
       self.class.openapi_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
@@ -284,7 +280,7 @@ module BbceApi
     # Returns the object in the form of hash
     # @return [Hash] Returns the object in the form of hash
     def to_hash
-      hash = super
+      hash = Hash.new
       self.class.attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
