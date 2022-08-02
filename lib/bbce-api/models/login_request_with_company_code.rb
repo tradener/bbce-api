@@ -102,7 +102,7 @@ module BbceApi
       self.class == o.class &&
         email == o.email &&
         password == o.password &&
-        company_external_code == o.company_external_cod
+        company_external_code == o.company_external_code
     end
 
     # @see the `==` method
@@ -203,7 +203,7 @@ module BbceApi
     # Returns the object in the form of hash
     # @return [Hash] Returns the object in the form of hash
     def to_hash
-      hash = {}
+      hash = Hash.new
       self.class.attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
