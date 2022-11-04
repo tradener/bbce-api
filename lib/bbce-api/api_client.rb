@@ -225,6 +225,11 @@ module BbceApi
       when /\AArray<(.+)>\z/
         # e.g. Array<Pet>
         sub_type = $1
+
+        if return_type == 'Array<NegotiableTicker>'
+          data = data[:tickers]
+        end
+
         data.map { |item| convert_to_type(item, sub_type) }
       when /\AHash\<String, (.+)\>\z/
         # e.g. Hash<String, Integer>
