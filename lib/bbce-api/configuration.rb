@@ -8,6 +8,12 @@ OpenAPI spec version: 1.0.0
 =end
 
 module BbceApi
+  module NullRateLimit
+    def self.call
+      yield
+    end
+  end
+
   class Configuration
     # Defines url scheme
     attr_accessor :scheme
@@ -122,6 +128,8 @@ module BbceApi
 
     attr_accessor :force_ending_format
 
+    attr_accessor :rate_throttle
+
     def initialize
       @scheme = 'http'
       @host = 'localhost'
@@ -139,6 +147,7 @@ module BbceApi
       @inject_format = false
       @force_ending_format = false
       @logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
+      @rate_throttle = NullRateLimit
 
       yield(self) if block_given?
     end

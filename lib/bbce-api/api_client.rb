@@ -33,6 +33,7 @@ module BbceApi
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
       }
+      @rate_throttle = config.rate_throttle
     end
 
     def self.default
@@ -45,7 +46,16 @@ module BbceApi
     #   the data deserialized from response body (could be nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
       request = build_request(http_method, path, opts)
-      response = request.run
+
+      response = @rate_throttle.call do
+        res = request.run
+
+        def res.status
+          code
+        end
+
+        res
+      end
 
       if @config.debugging
         @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
