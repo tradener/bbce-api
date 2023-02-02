@@ -38,6 +38,9 @@ module BbceApi
     # Company's operator identification
     attr_accessor :part_user_id
 
+    # Counter company's operator identification
+    attr_accessor :counter_part_user_id
+
     # Company identification
     attr_accessor :part_company_id
 
@@ -84,6 +87,7 @@ module BbceApi
         :'trading_unit' => :'tradingUnit',
         :'measurement_unit' => :'measurementUnit',
         :'part_user_id' => :'partUserId',
+        :'counter_part_user_id' => :'counterPartUserId',
         :'part_company_id' => :'partCompanyId',
         :'counter_part_company_id' => :'counterPartCompanyId',
         :'part_wallet_id' => :'partWalletId',
@@ -112,6 +116,7 @@ module BbceApi
         :'trading_unit' => :'Object',
         :'measurement_unit' => :'Object',
         :'part_user_id' => :'Object',
+        :'counter_part_user_id' => :'Object',
         :'part_company_id' => :'Object',
         :'counter_part_company_id' => :'Object',
         :'part_wallet_id' => :'Object',
@@ -186,6 +191,10 @@ module BbceApi
 
       if attributes.key?(:'part_user_id')
         self.part_user_id = attributes[:'part_user_id']
+      end
+
+      if attributes.key?(:'counter_part_user_id')
+        self.counter_part_user_id = attributes[:'counter_part_user_id']
       end
 
       if attributes.key?(:'part_company_id')
@@ -273,6 +282,10 @@ module BbceApi
         invalid_properties.push('invalid value for "part_user_id", part_user_id cannot be nil.')
       end
 
+      if @counter_part_user_id.nil?
+        invalid_properties.push('invalid value for "counter_part_user_id", counter_part_user_id cannot be nil.')
+      end
+
       if @part_company_id.nil?
         invalid_properties.push('invalid value for "part_company_id", part_company_id cannot be nil.')
       end
@@ -307,6 +320,7 @@ module BbceApi
       return false if @quantity.nil?
       return false if @unit_price.nil?
       return false if @part_user_id.nil?
+      return false if @counter_part_user_id.nil?
       return false if @part_company_id.nil?
       return false if @counter_part_company_id.nil?
       return false if @part_wallet_id.nil?
@@ -330,6 +344,7 @@ module BbceApi
           trading_unit == o.trading_unit &&
           measurement_unit == o.measurement_unit &&
           part_user_id == o.part_user_id &&
+          counter_part_user_id == o.counter_part_user_id &&
           part_company_id == o.part_company_id &&
           counter_part_company_id == o.counter_part_company_id &&
           part_wallet_id == o.part_wallet_id &&
@@ -353,7 +368,7 @@ module BbceApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [product_id, id, type, contract_number, part_position, quantity, unit_price, trading_unit, measurement_unit, part_user_id, part_company_id, counter_part_company_id, part_wallet_id, counter_part_wallet_id, cancellation_requestor_user_id, cancellation_approved_user_id, status, observation, approval_date, operation_type, created_at, updated_at].hash
+      [product_id, id, type, contract_number, part_position, quantity, unit_price, trading_unit, measurement_unit, part_user_id, counter_part_user_id, part_company_id, counter_part_company_id, part_wallet_id, counter_part_wallet_id, cancellation_requestor_user_id, cancellation_approved_user_id, status, observation, approval_date, operation_type, created_at, updated_at].hash
     end
 
     # Builds the object from hash
