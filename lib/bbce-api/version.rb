@@ -8,5 +8,5 @@ OpenAPI spec version: 1.0.0
 =end
 
 module BbceApi
-  VERSION = '1.0.2'
+  VERSION = '1.0.3'
 end

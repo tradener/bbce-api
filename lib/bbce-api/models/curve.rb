@@ -190,8 +190,6 @@ module BbceApi
       data_source_validator = EnumAttributeValidator.new('Object', ['B3', 'BBCE'])
       return false unless data_source_validator.valid?(@data_source)
       return false if @name.nil?
-      name_validator = EnumAttributeValidator.new('Object', ['PREDI', 'PLDI5', 'PLD'])
-      return false unless name_validator.valid?(@name)
       return false if @identity.nil?
       identity_validator = EnumAttributeValidator.new('Object', ['CURVE'])
       return false unless identity_validator.valid?(@identity)
@@ -210,16 +208,6 @@ module BbceApi
         fail ArgumentError, "invalid value for \"data_source\", must be one of #{validator.allowable_values}."
       end
       @data_source = data_source
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] name Object to be assigned
-    def name=(name)
-      validator = EnumAttributeValidator.new('Object', ['PREDI', 'PLDI5', 'PLD'])
-      unless validator.valid?(name)
-        fail ArgumentError, "invalid value for \"name\", must be one of #{validator.allowable_values}."
-      end
-      @name = name
     end
 
     # Custom attribute writer method checking allowed values (enum).
